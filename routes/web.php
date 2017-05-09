@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
+}); */
+
+Route::get('/', function () {
+	return view('home.index');
 });
+	
+Route::resource('register', 'Register');
+Route::resource('vitals', 'Vitals');
+Route::resource('pharmacy', 'PharmacyView');
+Route::resource('visits', 'VisitRecords');
+Route::resource('doctor-notes', 'DoctorsNotes');
