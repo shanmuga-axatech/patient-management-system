@@ -15,11 +15,11 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->increments('patient_id');
-            $table->integer('patient_no')->index();
+            $table->integer('patient_no')->unique();
             $table->string('first_name', 100);
             $table->string('last_name', 100);
             $table->date('dob');
-            $table->tinyInteger('age', 4);
+            $table->tinyInteger('age');
             $table->enum('sex', ['male', 'female', 'others']);
             $table->string('address1');
             $table->string('address2');
@@ -27,7 +27,7 @@ class CreatePatientsTable extends Migration
             $table->char('aadhar_no', 20);
             $table->string('city', 100);
             $table->string('remarks', 1000);
-            $table->integer('doctor_id')->index();
+            $table->integer('doctor_id');
             $table->timestamps();
         });
     }
