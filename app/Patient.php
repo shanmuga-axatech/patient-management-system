@@ -49,8 +49,7 @@ class Patient extends Model
 				last_name LIKE ? OR 
 				contact_no=? 
 				LIMIT 5';
-		$result = DB::select($sql, $params);
-		
+		$result = DB::select($sql, $params);		
 		foreach($result as $row) {
 			$item = array();
 			$item['label'] = $row->first_name.' '.$row->last_name;
@@ -60,8 +59,22 @@ class Patient extends Model
 			$item['contact_no'] = $row->contact_no;
 			$item['age'] = $row->age;
 			$data[] =  $item;
-		}
-		
+		}		
 		return $data;
+	}
+	
+	/**
+	 * To verify the auto complete search functionalities
+	 * 
+	 * @param object $param Request parameters
+	 * @return boolean
+	 */
+	public function verifyAutoCompleteSearch($request)
+	{
+		$status = false;		
+		$data = $this->find($request->patient_id);
+		
+		
+		return $status;
 	}
 }
