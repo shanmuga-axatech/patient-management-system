@@ -12,7 +12,7 @@
 <div class="row">
 	<div class="col-md-3">&nbsp;</div>
 	<div class="col-md-6">
-		<a href="/vitals/create"
+		<a href="/vitals/entry"
 			class="btn btn-primary btn-block"><i class="glyphicon glyphicon-tent"></i>&nbsp;Lab / Vitals</a>
 	</div>
 	<div class="col-md-3">&nbsp;</div>

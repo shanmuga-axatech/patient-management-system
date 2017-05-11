@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PatientIdValidate;
 
 class Vitals extends Controller
 {
@@ -12,9 +13,31 @@ class Vitals extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {    	
+        return view('vitals.list');
     }
+    
+    /**
+     * Select the patient based on unique identifiers
+     * 
+     * @return \Illuminate\Http\Response
+     */
+     public function entry()
+     {     	
+     	return view('layout.search', [
+     		'add'=>'vitals/entry',
+     		'list'=>'vitals/entry',
+     		'action'=>'/vitals/pass'	
+     	]);
+     }
+     
+     /**
+      * Verify the patient id 
+      */
+     public function pass(PatientIdValidate $request)
+     {
+     	return 'here';
+     }
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +46,7 @@ class Vitals extends Controller
      */
     public function create()
     {
-        //
+        return view('vitals.form');
     }
 
     /**

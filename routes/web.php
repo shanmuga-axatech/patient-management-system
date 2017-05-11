@@ -17,10 +17,17 @@
 
 Route::get('/', function () {
 	return view('home.index');
-});
-	
-Route::resource('register', 'Register');
+});	
+Route::resource('register', 'Register'); //done
+
+Route::post('search/patient-details', 'Search@patientDetails');
+
+Route::get('vitals/entry','Vitals@entry');
 Route::resource('vitals', 'Vitals');
+Route::post('vitals/pass', 'Vitals@pass');
+
+
+
 Route::resource('pharmacy', 'PharmacyView');
 Route::resource('visits', 'VisitRecords');
 Route::resource('doctor-notes', 'DoctorsNotes');

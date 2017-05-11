@@ -8,12 +8,16 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="../../favicon.ico">
 
     <title>SEVA TRUST</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    
+     <!-- JQuery UI CSS -->
+    <link href="/css/jquery-ui.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/css/style.css" rel="stylesheet">
@@ -62,6 +66,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/js/jquery.min.js"></script>   
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/search.js"></script>
 
   </body>
 </html>
