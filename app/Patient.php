@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class Patient extends Model
 {    
+	/**
+	 * Change the default primary key
+	 * @var string
+	 */
+	protected $primaryKey = 'patient_id';
+	
     /**
      * fetch next patient register number
      * 

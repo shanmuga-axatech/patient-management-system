@@ -29,9 +29,18 @@
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container text-center">       
-         <a href="/"><h3 class="color-white"><i class="glyphicon glyphicon-home"></i>&nbsp;SEVA TRUST</h3></a> 
-      </div>
+	    <div class="col-md-2 col-xs-2 col-sm-2 text-left">
+	    	<h3><a href="/"><i class="glyphicon glyphicon-home color-white"></i></a></h3>
+	    </div>
+	    <div class="col-md-6 col-xs-6 col-sm-6 text-center">
+	    	<h3 class="color-white">SEVA TRUST</h3>
+	    </div>    
+	    <div class="col-md-2 col-xs-2 col-sm-2 text-right">
+	    	<h3><a href="/@yield('add')"><i class="glyphicon glyphicon-plus-sign color-white"></i></a></h3>
+	    </div>
+	    <div class="col-md-2 col-xs-2 col-sm-2 text-right">
+	    	<h3><a href="/@yield('list')"><i class="glyphicon glyphicon-th-list color-white"></i></a></h3>
+	    </div>
     </nav>
 
     <div class="container">

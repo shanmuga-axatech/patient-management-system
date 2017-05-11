@@ -15,7 +15,7 @@ class Register extends Controller
      */
     public function index()
     {
-    	$patients = Patient::orderBy('patient_no', 'desc')->limit(10)->get();    	
+    	$patients = Patient::orderBy('patient_no', 'desc')->paginate(3);
         return view('register.list')->with('patients', $patients);
     }
 
@@ -53,7 +53,7 @@ class Register extends Controller
     	$patientRegister->remarks = $request->remarks;
     	$patientRegister->doctor_id = 0;
     	$patientRegister->save();
-    	redirect('/register')->with(
+    	return redirect('/register')->with(
     		'msg', 
     		'Patient Details Registered Successfully. Patient ID: '.$patientId
     	);
@@ -67,7 +67,10 @@ class Register extends Controller
      */
     public function show($id)
     {
-        //
+        $patient = Patient::find($id);        
+        return view('register.view', [
+        		'patient'=>$patient
+        ]);
     }
 
     /**
@@ -78,7 +81,8 @@ class Register extends Controller
      */
     public function edit($id)
     {
-        //
+        $patient = Patient::find($id);        
+        return view('register.edit')->with('patient', $patient);
     }
 
     /**
@@ -88,9 +92,26 @@ class Register extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RegisterValidate $request, $id)
     {
-        //
+        $patientRegister = Patient::find($id);
+    	$patientRegister->first_name = $request->first_name;
+    	$patientRegister->last_name = $request->last_name;
+    	$patientRegister->dob = date('Y-m-d', strtotime($request->dob));
+    	$patientRegister->age = $request->age;
+    	$patientRegister->sex = $request->sex;
+    	$patientRegister->address1 = $request->address1;
+    	$patientRegister->address2 = $request->address2;
+    	$patientRegister->contact_no = $request->contact_no;
+    	$patientRegister->aadhar_no = $request->aadhar_no;
+    	$patientRegister->city = $request->city;
+    	$patientRegister->remarks = $request->remarks;
+    	$patientRegister->doctor_id = 0;
+    	$patientRegister->save();
+    	return redirect('/register')->with(
+    		'msg', 
+    		'Patient Details Updated Successfully. Patient ID: '.$patientRegister->patient_no
+    	);
     }
 
     /**

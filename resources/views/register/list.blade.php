@@ -1,8 +1,11 @@
 @extends('layout.template') 
+@section('list','register')
+@section('add','register/create')
 @section('content')
 
 @if (session('msg'))
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         {{ session('msg') }}
     </div>
 @endif
@@ -39,4 +42,12 @@
 </div>
 @endforeach
 
+<div class="col-md-12 text-center">
+<nav aria-label="">
+  <ul class="pager">
+    <li><a href="{{$patients->previousPageUrl()}}"><span aria-hidden="true">&larr;</span> Previous</a></li>
+    <li><a href="{{$patients->nextPageUrl()}}">Next <span aria-hidden="true">&rarr;</span></a></li>
+  </ul>
+</nav>
+</div>
 @endsection
