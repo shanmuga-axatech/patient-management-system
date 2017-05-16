@@ -68,6 +68,7 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/search.js"></script>
+    <script src="/js/vitals.js"></script>
 
   </body>
 </html>

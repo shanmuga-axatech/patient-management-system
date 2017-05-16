@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PatientIdValidate;
 use App\Patient;
+use App\Http\Requests\VitalsValidate;
+use App\VitalRecords;
 
 class Vitals extends Controller
 {
@@ -15,7 +17,10 @@ class Vitals extends Controller
      */
     public function index()
     {    	
-        return view('vitals.list');
+    	$vitals = VitalRecords::orderBy('vital_id', 'desc')->paginate(3);
+    	$params = $this->getPatientDetails();
+    	$params['vitals'] = $vitals;
+        return view('vitals.list', $params);
     }
     
     /**
@@ -25,7 +30,7 @@ class Vitals extends Controller
      */
      public function entry(Request $request)
      {     	
-     	$request->session()->forget('vitals_patient_id');
+     	$request->session()->forget('vitals_patient_id');     	
      	return view('layout.search', [
      		'add'=>'vitals/entry',
      		'list'=>'vitals/entry',
@@ -63,7 +68,8 @@ class Vitals extends Controller
     public function create()
     {
     	if($this->isPatientIdSessionExist()) {    		
-        	return view('vitals.form');
+    		$params = $this->getPatientDetails();
+        	return view('vitals.form', $params);
     	}
     	else {
     		return redirect('vitals/entry');
@@ -76,9 +82,26 @@ class Vitals extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VitalsValidate $request)
     {
-        //
+       if($this->isPatientIdSessionExist()) {    		
+       		$date = explode('/',$request->record_date);
+       		$vital = new VitalRecords();
+       		$vital->patient_id = $request->patient_id;
+       		$vital->patient_no = $request->patient_no;
+       		$vital->record_date = $date[2].'-'.$date[1].'-'.$date[0];
+       		$vital->spo2 = empty($request->spo2)?0:$request->spo2;
+       		$vital->fbs = empty($request->fbs)?0:$request->fbs;
+       		$vital->grbs = empty($request->grbs)?0:$request->grbs;
+       		$vital->heartbeat = empty($request->heartbeat)?0:$request->heartbeat;
+       		$vital->save();
+       		return redirect('vitals')->with(
+	    		'msg', 'Vitals/Lab details created successfully'
+    		);       		
+       }
+       else {
+       		return redirect('vitals/entry');
+       }
     }
 
     /**
@@ -122,8 +145,18 @@ class Vitals extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {    	
+    	if($this->isPatientIdSessionExist()) {
+    		$vital = VitalRecords::find($id);
+    		$vital->delete();    		
+    		return redirect('vitals')->with(
+    			'msg', 'Vitals/Lab details removed successfully'
+    		);
+    	}
+    	else {
+    		return redirect('vitals');
+    	}
+       
     }
     
     /**
@@ -155,5 +188,23 @@ class Vitals extends Controller
 			}		
 		}
 		return $status;		
+    }
+    
+    /**
+     * To return the basic details of the patient
+     * 
+     * @param void
+     * @return array
+     */
+    private function getPatientDetails()
+    {
+    	$params = [
+    		'patient_no'=>session('patient_no'),
+    		'patient_id'=>session('patient_id'),
+    		'patient_name'=>session('first_name').' '.session('last_name'),
+    		'contact_no'=>session('contact_no'),
+    		'age'=>session('age')
+    	];
+    	return $params;
     }
 }
