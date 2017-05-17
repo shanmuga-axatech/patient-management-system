@@ -14,8 +14,9 @@ class CreateVitalRecordsTable extends Migration
     public function up()
     {
         Schema::create('vital_records', function (Blueprint $table) {
+        	$table->engine = 'InnoDB';
             $table->increments('vital_id');
-            $table->integer('patient_id');
+            $table->unsignedInteger('patient_id');
             $table->integer('patient_no')->index();
             $table->date('record_date');
             $table->integer('spo2')->nullable();

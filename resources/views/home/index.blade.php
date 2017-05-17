@@ -21,8 +21,8 @@
 <div class="row">
 	<div class="col-md-3">&nbsp;</div>
 	<div class="col-md-6">
-		<a href="http://localhost/seva/index.php/register"
-			class="btn btn-primary btn-block">Visit Records</a>
+		<a href="visits/entry"
+			class="btn btn-primary btn-block"><i class="glyphicon glyphicon-calendar"></i>&nbsp;Visit Records</a>
 	</div>
 	<div class="col-md-3">&nbsp;</div>
 </div>
@@ -31,7 +31,7 @@
 	<div class="col-md-3">&nbsp;</div>
 	<div class="col-md-6">
 		<a href="http://localhost/seva/index.php/register"
-			class="btn btn-primary btn-block">Doctor's Notes</a>
+			class="btn btn-primary btn-block"><i class="glyphicon glyphicon-briefcase"></i>&nbsp;Doctor's Notes</a>
 	</div>
 	<div class="col-md-3">&nbsp;</div>
 </div>

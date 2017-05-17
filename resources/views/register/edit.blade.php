@@ -1,7 +1,7 @@
 @extends('register.form', ['sex' => $patient->sex])
 @section('first_name', $patient->first_name)
 @section('last_name', $patient->last_name)
-@section('dob', $patient->dob)
+@section('dob', date('d/m/Y', strtotime($patient->dob)))
 @section('age', $patient->age)
 @section('address1', $patient->address1)
 @section('address2', $patient->address2)

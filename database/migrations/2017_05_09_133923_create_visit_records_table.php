@@ -14,12 +14,15 @@ class CreateVisitRecordsTable extends Migration
     public function up()
     {
         Schema::create('visit_records', function (Blueprint $table) {
+        	$table->engine = 'InnoDB';
             $table->increments('visit_id');
-            $table->integer('patient_id');
+            $table->unsignedInteger('patient_id');
             $table->integer('patient_no')->index();
-            $table->date('visit_date');
-            $table->enum('record_type', ['scan', 'lab', 'prescription']);            
-            $table->string('file_location');
+            $table->date('record_date');
+            $table->string('labdetails')->nullable();
+            $table->string('prescription')->nullable();
+            $table->string('scanreports')->nullable();
+            $table->string('remarks')->nullable();
             $table->foreign('patient_id')->references('patient_id')->on('patients')->onDelete('cascade');
             $table->timestamps();
         });

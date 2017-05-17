@@ -27,6 +27,12 @@ Route::post('vitals/pass', 'Vitals@pass');
 Route::get('vitals/{id}/delete', ['as' => 'vitals.delete', 'uses' => 'Vitals@destroy']);
 Route::resource('vitals', 'Vitals');
 
+Route::get('visits/entry','Visits@entry');
+Route::post('visits/pass', 'Visits@pass');
+Route::get( 'visits/download/{visit_id}/{cate}', 'Visits@download');
+Route::get('visits/{visit_id}/delete', ['as' => 'visits.delete', 'uses' => 'Visits@destroy']);
+Route::resource('visits', 'Visits');
+
+
 Route::resource('pharmacy', 'PharmacyView');
-Route::resource('visits', 'VisitRecords');
 Route::resource('doctor-notes', 'DoctorsNotes');

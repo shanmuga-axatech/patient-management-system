@@ -7,3 +7,12 @@
 .pad-top60 {
 	padding-top: 60px;
 }
+
+.ui-datepicker-month,.ui-datepicker-year {
+	color:#000;
+}
+
+.custom-badge {
+	background-color: #E95420;
+	color:#fff;
+}

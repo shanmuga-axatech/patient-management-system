@@ -14,8 +14,9 @@ class CreateDoctorNotesTable extends Migration
     public function up()
     {
         Schema::create('doctor_notes', function (Blueprint $table) {
+        	$table->engine = 'InnoDB';
             $table->increments('note_id');
-            $table->integer('patient_id');
+            $table->unsignedInteger('patient_id');
             $table->integer('patient_no')->index();
             $table->date('visit_date');
             $table->string('remarks', 1000);

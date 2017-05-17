@@ -38,11 +38,12 @@ class Register extends Controller
     public function store(RegisterValidate $request)
     {    	    	
     	$patientRegister = new Patient();
+    	$date = explode('/',$request->dob);
     	$patientId = $patientRegister->getNextPatientNo();
     	$patientRegister->patient_no = $patientId;
     	$patientRegister->first_name = $request->first_name;
     	$patientRegister->last_name = $request->last_name;
-    	$patientRegister->dob = date('Y-m-d', strtotime($request->dob));
+    	$patientRegister->dob = $date[2].'-'.$date[1].'-'.$date[0];        	
     	$patientRegister->age = $request->age;
     	$patientRegister->sex = $request->sex;
     	$patientRegister->address1 = $request->address1;
