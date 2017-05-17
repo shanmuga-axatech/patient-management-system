@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDoctorNotesTable extends Migration
+class CreateDoctorNoteDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateDoctorNotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('doctor_notes', function (Blueprint $table) {
-        	$table->engine = 'InnoDB';
+        Schema::create('doctor_note_details', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('note_id');
             $table->unsignedInteger('patient_id');
             $table->integer('patient_no')->index();
@@ -32,6 +32,6 @@ class CreateDoctorNotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doctor_notes');
+        Schema::dropIfExists('doctor_note_details');
     }
 }
