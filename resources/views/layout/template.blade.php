@@ -70,6 +70,7 @@
     <script src="/js/patient.js"></script>
     <script src="/js/search.js"></script>
     <script src="/js/vitals.js"></script>
+    <script src="/js/doctor-notes.js"></script>
 
   </body>
 </html>

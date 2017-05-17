@@ -129,25 +129,26 @@ class Visits extends Controller
      */
     public function download($visit_id, $cate)
     {
-    	$visit = VisitRecords::find($visit_id);    	
-    	$filename = '';    	
-    	switch ($cate) {
-    		case 'lab':
-    			$filename = $visit->labdetails;
-    			break;
-    		case 'pre':
-    			$filename = $visit->prescription;
-    			break;
-    		case 'scn':
-    			$filename = $visit->scanreports;
-    			break;
-    	}    	
-    	if(!empty($filename) && !is_null($filename)) {
-    		$fileurl = $visit->record_date.'/'.$visit->patient_id.'/'.$filename;
-    		$filePath = public_path('uploads/'.$fileurl);
-    		return response()->download($filePath);
+    	if($this->isPatientIdSessionExist()) {
+	    	$visit = VisitRecords::find($visit_id);    	
+	    	$filename = '';    	
+	    	switch ($cate) {
+	    		case 'lab':
+	    			$filename = $visit->labdetails;
+	    			break;
+	    		case 'pre':
+	    			$filename = $visit->prescription;
+	    			break;
+	    		case 'scn':
+	    			$filename = $visit->scanreports;
+	    			break;
+	    	}    	
+	    	if(!empty($filename) && !is_null($filename)) {
+	    		$fileurl = $visit->record_date.'/'.$visit->patient_id.'/'.$filename;
+	    		$filePath = public_path('uploads/'.$fileurl);
+	    		return response()->download($filePath);
+	    	}
     	}
-    	return false;
     }
     
     /**
@@ -159,23 +160,23 @@ class Visits extends Controller
      */
     public static function getDownloadLink($visit, $cate)
     {
-    	$filename = '';
-    	switch ($cate) {
-    		case 'lab':
-    			$filename = $visit->labdetails;
-    			break;
-    		case 'pre':
-    			$filename = $visit->prescription;
-    			break;
-    		case 'scn':
-    			$filename = $visit->scanreports;
-    			break;
-    	}
-    	if(!empty($filename) && !is_null($filename)) {    		
-    		$url = url('visits/download/'.$visit->visit_id.'/'.$cate);
-    		return $url;
-    	}
-    	return '#';
+	    	$filename = '';
+	    	switch ($cate) {
+	    		case 'lab':
+	    			$filename = $visit->labdetails;
+	    			break;
+	    		case 'pre':
+	    			$filename = $visit->prescription;
+	    			break;
+	    		case 'scn':
+	    			$filename = $visit->scanreports;
+	    			break;
+	    	}
+	    	if(!empty($filename) && !is_null($filename)) {    		
+	    		$url = url('visits/download/'.$visit->visit_id.'/'.$cate);
+	    		return $url;
+	    	}
+	    	return '#';
     }
     
     /**

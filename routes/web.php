@@ -34,5 +34,10 @@ Route::get('visits/{visit_id}/delete', ['as' => 'visits.delete', 'uses' => 'Visi
 Route::resource('visits', 'Visits');
 
 
-Route::resource('pharmacy', 'PharmacyView');
+Route::get('doctor-notes/entry','DoctorsNotes@entry');
+Route::post('doctor-notes/pass', 'DoctorsNotes@pass');
+Route::get('doctor-notes/{id}/delete', ['as' => 'doctor-notes.delete', 'uses' => 'DoctorsNotes@destroy']);
 Route::resource('doctor-notes', 'DoctorsNotes');
+
+Route::resource('pharmacy', 'PharmacyView');
+
