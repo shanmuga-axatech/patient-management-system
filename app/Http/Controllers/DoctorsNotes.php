@@ -31,6 +31,7 @@ class DoctorsNotes extends Controller
     {
     	if($this->isPatientIdSessionExist()) {    		
     		$params = $this->getPatientDetails();
+    		$params['visit_date'] = date('d/m/Y');
         	return view('doctor-notes.form', $params);
     	}
     	else {

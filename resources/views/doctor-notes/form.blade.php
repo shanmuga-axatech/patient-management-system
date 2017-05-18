@@ -24,9 +24,9 @@
   @section('form_method')
   @show
   
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-12">
     <label for="visit_date">Visit Date</label>
-    <input type="text" class="form-control" value="@yield('visit_date')" name="visit_date" id="visit_date" placeholder="dd/mm/yyyy">
+    <input type="text" class="form-control" value="{{$visit_date}}" name="visit_date" id="visit_date" placeholder="dd/mm/yyyy">
   </div>
   <div class="form-group col-md-12">
 		<label for="remarks">Remarks</label> 

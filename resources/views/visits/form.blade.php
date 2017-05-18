@@ -25,7 +25,7 @@
 
 	<div class="form-group col-md-6">
 		<label for="record_date">Record Date</label> <input type="text"
-			class="form-control" value="@yield('record_date')" name="record_date"
+			class="form-control" value="{{$record_date}}" name="record_date"
 			id="record_date" placeholder="dd/mm/yyyy">
 	</div>
 	<div class="form-group col-md-6">

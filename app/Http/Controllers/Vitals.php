@@ -69,6 +69,7 @@ class Vitals extends Controller
     {
     	if($this->isPatientIdSessionExist()) {    		
     		$params = $this->getPatientDetails();
+    		$params['record_date'] = date('d/m/Y');
         	return view('vitals.form', $params);
     	}
     	else {
