@@ -36,23 +36,14 @@
 		<div class="col-md-3">&nbsp;</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-3">&nbsp;</div>
-		<div class="col-md-6">
-			<a href="doctor-notes/entry" class="btn btn-primary btn-block"><i
-				class="glyphicon glyphicon-search"></i>&nbsp;Patients Detailed View</a>
-		</div>
-		<div class="col-md-3">&nbsp;</div>
-	</div>
-
-	<div class="row">
+	<!-- <div class="row">
 		<div class="col-md-3">&nbsp;</div>
 		<div class="col-md-6">
 			<a href="http://localhost/seva/index.php/register"
 				class="btn btn-primary btn-block">Pharmacy View</a>
 		</div>
 		<div class="col-md-3">&nbsp;</div>
-	</div>
+	</div> -->
 </div>
 
 <div class="container hidden-xs hidden-sm visible-md visible-lg">
@@ -77,15 +68,13 @@
 					<li><a href="/register/create"><i class="glyphicon glyphicon-user"></i>&nbsp;
 							New Registeration</a></li>
 					<li><a href="/vitals/entry" class="btn btn-primary btn-block"><i
-				class="glyphicon glyphicon-tent"></i>&nbsp;Lab / Vitals</a></li>
-				<li><a href="visits/entry" class="btn btn-primary btn-block"><i
-				class="glyphicon glyphicon-calendar"></i>&nbsp;Visit Records</a></li>
-				<li><a href="doctor-notes/entry" class="btn btn-primary btn-block"><i
-				class="glyphicon glyphicon-briefcase"></i>&nbsp;Doctor's Notes</a></li>
-				<li><a href="doctor-notes/entry" class="btn btn-primary btn-block"><i
-				class="glyphicon glyphicon-search"></i>&nbsp;Patients Detailed View</a></li>
-				<li><a href="http://localhost/seva/index.php/register"
-				class="btn btn-primary btn-block">Pharmacy View</a></li>
+							class="glyphicon glyphicon-tent"></i>&nbsp;Lab / Vitals</a></li>
+					<li><a href="visits/entry" class="btn btn-primary btn-block"><i
+							class="glyphicon glyphicon-calendar"></i>&nbsp;Visit Records</a></li>
+					<li><a href="doctor-notes/entry" class="btn btn-primary btn-block"><i
+							class="glyphicon glyphicon-briefcase"></i>&nbsp;Doctor's Notes</a></li>					
+					<!-- <li><a href="http://localhost/seva/index.php/register"
+						class="btn btn-primary btn-block">Pharmacy View</a></li> -->
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

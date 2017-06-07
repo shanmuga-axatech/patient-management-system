@@ -33,7 +33,6 @@ Route::get( 'visits/download/{visit_id}/{cate}', 'Visits@download');
 Route::get('visits/{visit_id}/delete', ['as' => 'visits.delete', 'uses' => 'Visits@destroy']);
 Route::resource('visits', 'Visits');
 
-
 Route::get('doctor-notes/entry','DoctorsNotes@entry');
 Route::post('doctor-notes/pass', 'DoctorsNotes@pass');
 Route::get('doctor-notes/{id}/delete', ['as' => 'doctor-notes.delete', 'uses' => 'DoctorsNotes@destroy']);
