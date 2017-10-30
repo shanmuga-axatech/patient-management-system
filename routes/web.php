@@ -40,3 +40,7 @@ Route::resource('doctor-notes', 'DoctorsNotes');
 
 Route::resource('pharmacy', 'PharmacyView');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
